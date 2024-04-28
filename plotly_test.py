@@ -3,6 +3,8 @@ import plotly.express as px
 
 import pandas as pd
 
+## hi pookie 
+
 planets = pd.read_csv("./planetary_systems.csv", skiprows=90)
 planets.dropna(inplace=True)
 planets.reset_index(inplace=True)
