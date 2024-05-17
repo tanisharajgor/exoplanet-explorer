@@ -1,0 +1,21 @@
+.checklist {
+    margin-left: 53px;
+}
+
+.checklist h2 {
+    text-align: left;
+    font-weight: 300;
+}
+
+.checklist .dbc-checklist {
+    column-count: 4;
+    background-color: #191925;
+    padding: 15px;
+    border-radius: 10px;
+    width: 88.75vw;
+}
+
+.checklist .dbc-checklist input:checked {
+    border-radius: 10px;
+    accent-color: rgba(65, 79, 142, 0.5);
+}

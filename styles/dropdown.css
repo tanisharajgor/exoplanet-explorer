@@ -1,0 +1,9 @@
+.dropdown {
+    margin-left: 53px;
+    margin-top: 0px;
+    width: 88.75vw;
+}
+
+.dropdown select {
+    color: #1e1e1e;
+}

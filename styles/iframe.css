@@ -1,0 +1,19 @@
+.iframe-container {
+    margin-left: 51px;
+    width: 88.8vw;
+}
+
+.iframe-container .iframe-wrapper {
+    margin-top: 10px;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.iframe-container iframe {
+    width: 88.75vw;
+    height: 550px;
+    border: 0;
+}
