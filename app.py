@@ -9,10 +9,10 @@ from flask import Flask
 
 df = load_and_clean_data("./planetary_systems.csv")
 
-server = flask.Flask(__name__)
+server = Flask(__name__)
 
 external_stylesheets = ['dashboard.css']
-app = dash.Dash(external_stylesheets=external_stylesheets, server=server)
+app = dash.Dash(__name__, external_stylesheets=external_stylesheets, server=server)
 
 app.layout = html.Div(
     style={
