@@ -33,7 +33,7 @@ body {
 }
 
 .col-info:hover {
-  color: #ffffff;
-  border-color: rgba(191, 200, 233, 1.0);
-  background-color: rgba(17, 19, 31, 0.3);
+  color: #6ddef6;
+  border-color: #6ddef6;
+  background-color: rgb(3,40,48);
 }
