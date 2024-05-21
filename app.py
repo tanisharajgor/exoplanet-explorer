@@ -11,8 +11,8 @@ df = load_and_clean_data("./planetary_systems.csv")
 
 server = Flask(__name__)
 
-external_stylesheets = ['dashboard.css']
-app = dash.Dash(__name__, external_stylesheets=external_stylesheets, server=server)
+external_stylesheets = ['assets/dashboard.css']
+app = dash.Dash(__name__, server=server)
 
 app.layout = html.Div(
     style={
@@ -31,7 +31,7 @@ app.layout = html.Div(
 
         # Planet dropdown.
         html.Div(
-            style={'marginLeft': '53px', 'marginTop': '0px', 'width': '88.75vw'},
+            style={'marginLeft': '53px', 'marginRight': '53px', 'marginTop': '0px', 'width': '88.75vw'},
             children=[
                 dcc.Dropdown(
                     id='planet-dropdown',
@@ -42,14 +42,41 @@ app.layout = html.Div(
             ]
         ),
 
-        # Attribute checklist.
+        # Attribute selection heading.
         html.Div(
-            style={'marginLeft': '53px'},
+            style={'marginLeft': '53px', 'marginRight': '53px', 'display': 'flex', 'alignItems': 'center'},
             children=[
                 html.H2(
                     "Select Attributes to Display:",
                     style={'textAlign': 'left', 'fontWeight': 300}
                 ),
+                html.Div(
+                    "What do these mean? ⓘ",
+                    className='col-info',
+                    # style={
+                    #     'marginLeft': '15px', 
+                    #     'color': 'rgb(192,200,233',
+                    #     'padding': '5px',
+                    #     'backgroundColor': 'rgba(33, 39, 71, 0.5)',
+                    #     'border': '2px solid rgb(192,200,233)',
+                    #     'borderRadius': '10px',
+                    #     'margin': '20px',
+                    #     'width': '20vw',
+                    #     'height': '3.5vw',  
+                    #     'display': 'flex', 
+                    #     'alignItems': 'center', 
+                    #     'justifyContent': 'center',  
+                    #     'textAlign': 'center',
+                    #     'fontSize': '14px'
+                    # }
+                ),
+            ]
+        ),
+
+        # Attribute checklist.
+        html.Div(
+            style={'marginLeft': '53px', 'marginRight': '53px'},
+            children=[
                 dbc.Checklist(
                     id='attribute-checklist',
                     options=[{"label": attribute, "value": attribute} for attribute in df.columns[1:]],
@@ -71,7 +98,7 @@ app.layout = html.Div(
 
         # Display selected attributes.
         html.Div(
-            style={'marginLeft': '51px', 'width': '88.8vw'},
+            style={'marginLeft': '51px', 'marginRight': '51px', 'width': '88.8vw'},
             children=[
                 html.H2("Viewing Board", style={'textAlign': 'left', 'fontWeight': 300, 'marginBottom': '0px'}),
                 html.Div(id='attribute-display', style={'marginTop': '10px', 'marginBottom': '30px', 'backgroundColor': '#191925', 'padding': '15px', 'border-radius': '10px'})
@@ -86,7 +113,7 @@ app.layout = html.Div(
 
         # Footer.
         html.Div(
-            style={'marginLeft': '51px', 'width': '88.8vw', 'fontSize': '15px'},
+            style={'marginLeft': '51px', 'marginRight': '51px', 'width': '88.8vw', 'fontSize': '15px'},
             children=[
                 html.P([
                     "Data sourced from the ",
@@ -100,7 +127,6 @@ app.layout = html.Div(
                 ])
             ]
         ),
-
     ]
 )
 
@@ -113,8 +139,13 @@ app.layout = html.Div(
 def update_iframe(selected_planet, selected_attributes):
     if selected_planet:
         src = f"https://eyes.nasa.gov/apps/exo/#/planet/{pre_process_planets(selected_planet)}"
-        # print(src)
-        return html.Iframe(src=src, title="", className="smd-iframe-iframe margin-left-auto margin-right-auto border-0", allow="fullscreen", style={'width': '88.75vw', 'height': '550px'})
+        return html.Iframe(
+            src=src, 
+            title="", 
+            className="smd-iframe-iframe margin-left-auto margin-right-auto border-0", 
+            allow="fullscreen", 
+            style={'width': '88.75vw', 'height': '550px'}
+        )
     else:
         return html.Div()
 
@@ -129,7 +160,6 @@ def update_displayed_attributes(selected_planet, selected_attributes):
         return html.Div("Nothing to see here yet! Please select some attributes.")
 
     planet_data = df[df['pl_name'] == selected_planet]
-
     selected_data = planet_data[selected_attributes]
 
     table = html.Table([
