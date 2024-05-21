@@ -174,3 +174,4 @@ def update_displayed_attributes(selected_planet, selected_attributes):
 
 if __name__ == '__main__':
     app.run_server(debug=True)
+
