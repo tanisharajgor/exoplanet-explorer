@@ -46,3 +46,30 @@ body {
 .dmc-modal-content {
   background-color: rgb(25,25,37);
 }
+
+.col-info-table {
+  background-color: rgb(158, 165, 192, 0.2);
+  padding: 20px;
+  border-radius: 5px;
+}
+
+/* Custom styles for the table */
+.col-info-table table {
+  border-spacing: 0 20px;
+  background-color: #f8f9fa;
+  color: white;
+  border-radius: 20px;
+}
+
+.col-info-table th {
+  background-color: rgb(158, 165, 192, 0.2); 
+  color: white;
+  padding: 10px;
+}
+
+.col-info-table td {
+  background-color: rgb(158, 165, 192, 0.3);
+  color: white;
+  padding: 10px;
+  border-radius: 0px;
+}

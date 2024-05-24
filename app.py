@@ -17,7 +17,7 @@ col_info_df = pd.read_csv("./col_info.csv")
 
 server = Flask(__name__)
 
-external_stylesheets = ['assets/dashboard.css']
+external_stylesheets = ['assets/dashboard.css', dbc.themes.BOOTSTRAP]
 app = dash.Dash(__name__, server=server)
 
 app.layout = dmc.MantineProvider(
@@ -60,7 +60,8 @@ app.layout = dmc.MantineProvider(
                         title="Column Info",
                         zIndex=10000,
                         children=[
-                            dbc.Table.from_dataframe(col_info_df, striped=True, bordered=True, hover=True)
+                            dbc.Table.from_dataframe(col_info_df, 
+                                                     className='col-info-table')
                             ],
                     ),
                 ]
@@ -72,7 +73,7 @@ app.layout = dmc.MantineProvider(
                     dbc.Checklist(
                         id='attribute-checklist',
                         options=[{"label": attribute, "value": attribute} for attribute in df.columns[1:]],
-                        value=["pl_name", "hostname"],
+                        value=["Planet Name", "Host Name"],
                         input_checked_style={
                             'border-radius': '10px',
                             'accent-color': 'rgba(65,79,142, 0.5)'
