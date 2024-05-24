@@ -13,7 +13,7 @@ from utils import load_and_clean_data, pre_process_planets
 from flask import Flask
 
 df = load_and_clean_data("./planetary_systems.csv")
-# col_info_df = pd.read_csv("./") # fill this in 
+col_info_df = pd.read_csv("./col_info.csv") 
 
 server = Flask(__name__)
 
@@ -35,7 +35,7 @@ app.layout = dmc.MantineProvider(
                 children=[
                     dcc.Dropdown(
                         id='planet-dropdown',
-                        options=[{'label': planet_name, 'value': planet_name} for planet_name in df['pl_name']],
+                        options=[{'label': planet_name, 'value': planet_name} for planet_name in df['Planet Name']],
                         placeholder="Select a planet...",
                         style={'color': '#1e1e1e'}
                     ),
@@ -60,8 +60,7 @@ app.layout = dmc.MantineProvider(
                         title="Column Info",
                         zIndex=10000,
                         children=[
-                            html.P("Fill this out."),
-                            # dbc.Table.from_dataframe(col_info_df, striped=True, bordered=True, hover=True)
+                            dbc.Table.from_dataframe(col_info_df, striped=True, bordered=True, hover=True)
                             ],
                     ),
                 ]
@@ -79,7 +78,7 @@ app.layout = dmc.MantineProvider(
                             'accent-color': 'rgba(65,79,142, 0.5)'
                         },
                         style={
-                            'columnCount': 4,
+                            'columnCount': 3,
                             'backgroundColor': '#191925',
                             'padding': '15px',
                             'border-radius': '10px',
@@ -159,7 +158,7 @@ def update_displayed_attributes(selected_planet, selected_attributes):
     if selected_planet is None or not selected_attributes:
         return html.Div("Nothing to see here yet! Please select some attributes.")
 
-    planet_data = df[df['pl_name'] == selected_planet]
+    planet_data = df[df['Planet Name'] == selected_planet]
     selected_data = planet_data[selected_attributes]
 
     table = html.Table([

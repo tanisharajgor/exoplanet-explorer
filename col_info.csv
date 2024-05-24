@@ -1,0 +1,29 @@
+Attribute,Description
+Planet Name,Planet name most commonly used in the literature
+Host Name,Stellar name most commonly used in the literature
+Number of Stars,Number of stars in the planetary system
+Number of Planets,Number of confirmed planets in the planetary system
+Discovery Method,Method by which the planet was first identified
+Discovery Year,Year the planet was discovered
+Discovery Facility,Name of facility of planet discovery observations
+Orbital Period [days],Time the planet takes to make a complete orbit around the host star or system (days)
+Orbit Semi-Major Axis [au],"The longest radius of an elliptic orbit, or, for exoplanets detected via gravitational microlensing or direct imaging, the projected separation in the plane of the sky"
+Planet Radius [Earth Radius],"Length of a line segment from the center of the planet to its surface, measured in units of radius of the Earth"
+Planet Mass [Earth Mass],"Amount of matter contained in the planet, measured in units of masses of the Earth"
+Eccentricity,Amount by which the orbit of the planet deviates from a perfect circle
+Equilibrium Temperature [K],"The equilibrium temperature of the planet as modeled by a black body heated only by its host star, or for directly imaged planets, the effective temperature of the planet required to match the measured luminosity if the planet were a black body"
+Spectral Type,Classification of the star based on their spectral characteristics following the Morgan-Keenan system
+Stellar Effective Temperature [K],Temperature of the star as modeled by a black body emitting the same total amount of electromagnetic radiation
+Stellar Radius [Solar Radius],"Length of a line segment from the center of the star to its surface, measured in units of radius of the Sun"
+Stellar Mass [Solar mass],"Amount of matter contained in the star, measured in units of masses of the Sun"
+Stellar Metallicity [dex],Measurement of the metal content of the photosphere of the star as compared to the hydrogen content
+Stellar Metallicity Ratio,"Ratio for the Metallicity Value ([Fe/H] denotes iron abundance, [M/H] refers to a general metal content)"
+Stellar Surface Gravity,Gravitational acceleration experienced at the stellar surface
+RA [sexagesimal],Right Ascension of the planetary system in sexagesimal format [log10(cm/s**2)]
+RA [decimal],Right Ascension of the planetary system in decimal degrees
+Dec [sexagesimal],Declination of the planetary system in sexagesimal notation
+Dec [decimal],Declination of the planetary system in decimal degrees
+Distance [pc],Distance to the planetary system in units of parsecs
+V (Johnson) Magnitude,Brightness of the host star as measured using the V (Johnson) band in units of magnitudes
+Ks (2MASS) Magnitude,Brightness of the host star as measured using the J (2MASS) band in units of magnitudes
+Gaia Magnitude,Brightness of the host star as measuring using the Gaia band in units of magnitudes. Objects matched to Gaia using the Hipparcos or 2MASS IDs provided in Gaia DR2
