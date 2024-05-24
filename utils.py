@@ -2,7 +2,7 @@ import pandas as pd
 from dash import dcc, html
 
 def load_and_clean_data(file_path):
-    df = pd.read_csv(file_path, skiprows=1)
+    df = pd.read_csv(file_path, skiprows=2)
     df.dropna(inplace=True)
     df.reset_index(inplace=True)
     df.drop("index", axis=1, inplace=True)
