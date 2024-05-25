@@ -93,7 +93,7 @@ app.layout = dmc.MantineProvider(
                 style={'marginLeft': '51px', 'marginRight': '51px', 'width': '88.8vw'},
                 children=[
                     html.H2("Viewing Board", style={'textAlign': 'left', 'fontWeight': 300, 'marginBottom': '0px'}),
-                    html.Div(id='attribute-display', style={'marginTop': '10px', 'marginBottom': '30px', 'backgroundColor': '#191925', 'padding': '15px', 'border-radius': '10px'})
+                    html.Div(id='attribute-display', style={'columnCount': 3,'marginTop': '10px', 'marginBottom': '30px', 'backgroundColor': '#191925', 'padding': '15px', 'border-radius': '10px'})
                 ]
             ),
             # Surface view plug-in.
@@ -162,14 +162,18 @@ def update_displayed_attributes(selected_planet, selected_attributes):
     planet_data = df[df['Planet Name'] == selected_planet]
     selected_data = planet_data[selected_attributes]
 
+    # table = html.Table([
+    #     html.Tr([html.Th(col) for col in selected_data.columns]),
+    #     *[
+    #         html.Tr([html.Td(selected_data.iloc[i][col]) for col in selected_data.columns])
+    #         for i in range(len(selected_data))
+    #     ]
+    # ]) 
     table = html.Table([
-        html.Tr([html.Th(col) for col in selected_data.columns]),
-        *[
-            html.Tr([html.Td(selected_data.iloc[i][col]) for col in selected_data.columns])
-            for i in range(len(selected_data))
-        ]
-    ])
+        html.Tr([col + " : " + str(selected_data.iloc[i][col]) ]) for col in selected_data.columns
+        for i in range(len(selected_data))
 
+    ])
     return table
 
 if __name__ == '__main__':
