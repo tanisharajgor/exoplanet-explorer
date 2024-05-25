@@ -157,7 +157,7 @@ def update_iframe(selected_planet, selected_attributes):
 )
 def update_displayed_attributes(selected_planet, selected_attributes):
     if selected_planet is None or not selected_attributes:
-        return html.Div("Nothing to see here yet! Please select some attributes.")
+        return html.Div("Please select some attributes!")
 
     planet_data = df[df['Planet Name'] == selected_planet]
     selected_data = planet_data[selected_attributes]
