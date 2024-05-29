@@ -180,14 +180,18 @@ def update_displayed_attributes(selected_planet, selected_attributes):
     # Turn this into a table.
     
     table = [html.P([html.Strong(col), ': ' + str(attrs[col])], style={'margin': '10px', 'wordWrap': 'breakWord'}) for col in attrs]
-    table = html.Div(table, 
-        style={
-            'display': 'grid',
-            'gridTemplateColumns': 'repeat(4, 1fr)',
-            'gap': '10px',
-            'wordWrap': 'breakWord'
+    table = dmc.Table(
+        # striped=True,
+        highlightOnHover=True,
+        highlightOnHoverColor='rgb(83,87,105)',
+        # withTableBorder=True,
+        withColumnBorders=True,
+        data={
+            'head': ['Attribute', 'Value'],
+            'body': [[attr, attrs[attr]] for attr in attrs]
         }
     )
+
     return table
 
 attrs = {}
