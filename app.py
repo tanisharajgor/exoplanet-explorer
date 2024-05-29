@@ -93,7 +93,7 @@ app.layout = dmc.MantineProvider(
                 style={'marginLeft': '51px', 'marginRight': '51px', 'width': '88.8vw'},
                 children=[
                     html.H2("Viewing Board", style={'textAlign': 'left', 'fontWeight': 300, 'marginBottom': '0px'}),
-                    html.Div(id='attribute-display', style={'columnCount': 3,'marginTop': '10px', 'marginBottom': '30px', 'backgroundColor': '#191925', 'padding': '15px', 'border-radius': '10px'})
+                    html.Div(id='attribute-display', style={'marginTop': '10px', 'marginBottom': '30px', 'backgroundColor': '#191925', 'padding': '15px', 'border-radius': '10px'})
                 ]
             ),
             # Surface view plug-in.
@@ -169,12 +169,28 @@ def update_displayed_attributes(selected_planet, selected_attributes):
     #         for i in range(len(selected_data))
     #     ]
     # ]) 
-    table = html.Table([
-        html.Tr([col + " : " + str(selected_data.iloc[i][col]) ]) for col in selected_data.columns
-        for i in range(len(selected_data))
+    
+    attrs = {}
 
-    ])
+    # Create a dictionary with the selected attributes
+    for i in range(len(selected_data)):
+        for col in selected_data.columns:
+            attrs[col] = selected_data.iloc[i][col]
+        
+    # Turn this into a table.
+    
+    table = [html.P([html.Strong(col), ': ' + str(attrs[col])], style={'margin': '10px', 'wordWrap': 'breakWord'}) for col in attrs]
+    table = html.Div(table, 
+        style={
+            'display': 'grid',
+            'gridTemplateColumns': 'repeat(4, 1fr)',
+            'gap': '10px',
+            'wordWrap': 'breakWord'
+        }
+    )
     return table
+
+attrs = {}
 
 if __name__ == '__main__':
     app.run_server(debug=True)
